@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>COURSE SYS</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="signin.css" rel="stylesheet">
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			$('#loginButton').click(function (event) {
+				event.preventDefault();
+				if($("#inputTeacherNum").val()=="") {
+					$("#alert").text("请输入教工号");
+					$("#alert").show(500);
+					return;
+				}
+				if($("#inputPassword").val()=="") {
+					$("#alert").text("请输入密码");
+					$("#alert").show(500);
+					return;
+				}
+				var parameter = {
+					teacher_num: $("#inputTeacherNum").val(),
+					password: $("#inputPassword").val()
+				};
+				$.post('teacher_login.php', parameter, function(data) {
+					if(data == 1)
+						window.location.href="./teacher_info.php";
+					else {
+						$("#alert").text("教工号或密码错误");
+						$("#alert").show(500);
+					}
+				});
+			});
+			
+			$('input').bind('focus', function() {
+				$('.alert').hide(500);
+			});
+		});
+	</script>
+	</head>
+
+	<body>
+	<div class="alert alert-danger" role="alert" id="alert" style="display:none; position:fixed; top:0; width:100%">
+    </div>
+	<div style="height:700px; width:100%; background-repeat:no-repeat; position:absolute; z-index:-1; top:0; background-image:url(img/background.jpg)">
+		<div style="margin-top:100px; margin-right:80px; float:right; width:350px; background-color:white; border-radius:20px">
+			<form class="form-signin" method="post" enctype="multipart/form-data" action="./teacher_login.php">
+				<h2 class="form-signin-heading">教师入口</h2>
+				<label for="inputStudentNum" class="sr-only">教工号</label>
+				<input type="text" id="inputTeacherNum" name="teacher_num" class="form-control" placeholder="教工号" required autofocus>
+				<label for="inputPassword" class="sr-only">密码</label>
+				<input type="password" id="inputPassword" name="password" class="form-control" placeholder="密码" required>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="remember-me"> Remember me
+					</label>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block" id="loginButton">登录</button>
+			</form>
+		</div>
+	</div>
+
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</button>
+		<a class="navbar-brand" href="student_login.html">COURSE SYS</a>
+	</div>
+	<div id="navbar" class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="student_info.php">个人信息</a></li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">课程管理<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="select_courses.php">选课</a></li>
+					<li><a href="view_courses">查看课表</a></li>
+				</ul>
+			</li>
+			<li><a href="find_classroom">自习室查询</a></li>
+			<li><a href="evaluate.php">教学评价</a></li>
+		  </ul>
+		</ul>
+	</div>
+  </div>
+</nav>
+<div class="alert alert-danger" role="alert" id="alert" style="display:none; position:fixed; top:50px; width:100%">
+</div>
+<div class="alert alert-success" role="alert" id="success" style="display:none; position:fixed; top:50px; width:100%">
+</div>
